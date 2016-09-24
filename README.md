@@ -7,4 +7,4 @@
 - django-location-fields
 - django-twitter
 - django-ckeditor
-- 
+
