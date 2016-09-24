@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+	{%load staticfiles%}
+		<title>Welcome to my site</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<link href="{% static 'style.css' %}" rel="stylesheet" media="screen">	
+		<link href="{% static 'responsive.css' %}" rel="stylesheet" media="screen">	
+		
+		<script src="static/js/jquery-min.js"></script>
+
+		<!--google map-->
+		<script
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+		</script>
+{% for detail_art in select_article %}
+		<script>
+		var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+		var marker;
+
+		function initialize()
+		{
+		var mapProp = {
+		  center:myCenter,
+		  zoom:5,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		marker=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+
+		marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		
+	</head>
+
+	<body>
+	
+	
+		<div class="header_area">
+			<div class="fix header">
+				<div class="logo fix floatleft">
+					<a href="#"><h1>LOVE<span>BLOG</span></h1></a>
+				</div>
+				<div class="mainmenu floatright">
+					<ul id="nav">
+						<li><a href="index.html" class="active">Home</a></li>
+						<li><a href="single.html">About us</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a href="contact.html">Contact us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="header_bottom_area"></div>
+		<div class="main_content_area fix">
+			<div class="content_area structure">
+				<div class="single_header_title">
+					<h1>Contact us</h1>
+				</div>
+				<div class="single_content_area">
+					<div class="single_main_content floatleft">
+						<div class="google_map fix">
+						<!--	<img src="static/images/map.png" alt="map"/> -->
+						<div id="googleMap"></div>
+						</div>
+						<div class="cf_container">
+							<div class="address floatleft">
+								<span>Terakhir dipost</span>
+								<p>{{detail_art.tgl_buat}}</p>
+							
+							</div>
+							<div class="cf floatright">
+								
+								<p><b><font color="orange" size="5px">{{detail_art.title}}</font></b></p>
+								<p>{{detail_art.isi|safe}}</p>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="single_sidebar_area floatright">
+						<div class="single_sidebar">
+							<h2><span>About Jetro</span></h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praese nt libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elemen tum imperdiet. Duis sagittis ipsum. </p>
+						</div>
+						<div class="single_sidebar">
+							<h2><span>Categories</span></h2>
+							<ul class="category_list">
+								<li><a href="">Video (4)</a></li>
+								<li><a href="">Sport (5)</a></li>
+								<li><a href="">Media (2)</a></li>
+								<li><a href="">Entertainment (7)</a></li>
+								<li><a href="">Life (4)</a></li>
+								<li><a href="">Super Cool Stuff (8)</a></li>
+							</ul>
+						</div>
+						<div class="single_sidebar">
+							<h2><span>Photo Gallery</span></h2>
+							<div class="gallery_container">
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+								<img src="static/images/galley_photo.png" alt="" title=""/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fix footer_area">
+			<div class="fix footer">
+				<div class="fix single_footer_container">
+					<div class="fix single_footer floatleft">
+						<h2>About Jetro</h2>
+						<p>Lorem ipsum dolor sit amet, malorum recteque reprehendunt ea vel. Urbanitas adolescens vim te, per at tritani aperiri. Adhuc invenire convenire his ea. Id mei vitae denique, in eam commodo veritus disputando. </p>
+						<br/>
+						<p>Pro et erant delicata, eu vim essent imperdiet accommodare, dictas deseruisse ius an. Solet everti definitionem id ius, sonet oporteat cu vim.</p>
+					</div>
+					<div class="fix single_footer floatleft">
+						<h2>Twitter Widget</h2>
+						<p>@pixelmater What an awesome design with great functionality :)<br/>about 1 hour ago</p><br/>
+						<p>@pixelmater What an awesome design with great functionality :)<br/>about 2 hour ago</p><br/>
+						<p>Follow @bestpsdfreebies</p>
+					</div>
+					<div class="fix single_footer floatleft">
+						<h2>Contact us</h2>
+						<p>Lorem ipsum dolor sit amet, malorum recteque reprehendunt ea vel. Urbanitas adolescens vim te, per at tritani aperiri.</p>
+						<br/>
+						<p>information@jetro.com</p>
+						<p>1.222.333.4444</p>
+						<div class="fix social_area">
+							<ul>
+								<li><a href="#" class="facebook">facebook</a></li>
+								<li><a href="#" class="twitter">twitter</a></li>
+								<li><a href="#" class="email">email</a></li>
+								<li><a href="#" class="feed">feed</a></li>
+								<li><a href="#" class="vimeo">vimeo</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<script type="text/javascript" src="static/js/selectnav.min.js"></script>
+		<script type="text/javascript">
+			selectnav('nav', {
+			  label: '-Navigation-',
+			  nested: true,
+			  indent: '-'
+			});
+		</script>		
+	</body>
+</html>

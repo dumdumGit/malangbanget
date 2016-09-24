@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ {% for detail_wisat in select_wisata %}
+	<!--google map-->
+		<script
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+		</script>
+
+		<script>
+		var myCenter=new google.maps.LatLng({{detail_wisat.location}});
+		var marker;
+
+		function initialize()
+		{
+		var mapProp = {
+		  center:myCenter,
+		  zoom:15,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		marker=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+
+		marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+{% endfor %}
+
+{% for detail_wiskul in select_kuliner %}
+	<!--google map-->
+		<script
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+		</script>
+
+		<script>
+		var myCenter=new google.maps.LatLng({{detail_wiskul.location}});
+		var marker;
+
+		function initialize()
+		{
+		var mapProp = {
+		  center:myCenter,
+		  zoom:15,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		marker=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+
+		marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+{% endfor %}
+
+{%load staticfiles%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block title_page %}{% endblock %}">
+    <meta name="author" content="MalangBanget">
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+     {% for detail_wis in select_wisata %}
+    
+    <title>{{detail_wis.title}}</title>
+    {% endfor %}
+ 
+
+
+     {% for detail_kul in select_kuliner %}
+    <title>{{detail_kul.nama_kuliner}}</title>
+    {% endfor %}
+
+
+
+     {% for detail_arti in select_article %}
+    <title>{{detail_arti.title}}{{page.title}}</title>
+    {% endfor %}
+
+	<link rel="shortcut icon" href="{% static 'New Folder/logo burung bulet.png' %}"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="shortcut icon" href="{% static 'New Folder/logo burung bulet.png' %}"/>
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/blog-post.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style type="text/css">
+  .site_map ul li {
+    background: #FAFAFA;
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #fff;
+    padding: 2px;
+    padding-left: 5px;
+    list-style: decimal;
+  }
+  .site_map ul li:nth-child(odd) {
+    background: #FFF;
+  }
+.list_event{
+width:290px;
+min-height:300px;
+margin-top:10px;
+margin-left:10px;
+margin-right:50px;
+padding:10px 6px 10px 6px;
+background:#FFF;
+
+display:inline-block;
+}
+.list_event td{
+    padding-top:3px;
+    padding-bottom:3px;
+ 
+}
+.list_event th{
+    border-bottom:1px solid #DCDCDC;
+    padding-bottom:3px;
+    padding-top:3px;
+}
+.list_event table{
+    border-right:1px solid #DCDCDC;
+}
+
+</style>
+	
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav id="custom-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">MalangBanget</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#intro">Perkenalan</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#about">Wisata dan Kuliner</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#portfolio">Shortcut</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#parallaxmen">Jebret</a>
+                    </li>
+                </ul>
+                <ul class="navbar-right">
+                        <form action="/search/" method="GET" class="navbar-form pull-right" role="search">
+                            <div class="input-group">
+                            {% csrf_token %}
+                                <input type="text" class="form-control" placeholder="Cari disini" name="found">
+                                
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                        </form> 
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+				{% block result %}
+
+
+                {% endblock %}
+
+
+{% if list_article %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List News</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_article %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/{{lokasi.id}}">{{lokasi.title}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.tgl_buat}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.isi|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_article.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_article.has_previous %}href="?page={{list_article.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_article.number %}
+<li class="active">
+    <a href="#">{{list_article.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_article.paginator.num_pages}}">Last</a></li>
+<li {% if not list_article.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_article.has_next %} href="?page={{list_article.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+{% endif %}
+
+
+{% if list_lokasi %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Lokasi Wisata</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_lokasi %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/wisata/{{lokasi.id}}">{{lokasi.title}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.last_modified}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/wisata/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_lokasi.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_lokasi.has_previous %}href="?page={{list_lokasi.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_lokasi.number %}
+<li class="active">
+    <a href="#">{{list_lokasi.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_lokasi.paginator.num_pages}}">Last</a></li>
+<li {% if not list_lokasi.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_lokasi.has_next %} href="?page={{list_lokasi.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+{% endif %}
+
+{% if list_kuliner %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Kuliner</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_kuliner %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/wisata/kuliner/{{lokasi.id}}">{{lokasi.nama_kuliner}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.last_modified}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/wisata/kuliner/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_kuliner.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_kuliner.has_previous %}href="?page={{list_kuliner.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_kuliner.number %}
+<li class="active">
+    <a href="#">{{list_kuliner.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_kuliner.paginator.num_pages}}">Last</a></li>
+<li {% if not list_kuliner.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_kuliner.has_next %} href="?page={{list_kuliner.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+
+{% endif %}
+
+
+{% if list_hotel %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Hotel</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_hotel %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/hotel/{{lokasi.id}}">{{lokasi.nama_hotel}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.tgl_pub}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/hotel/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_hotel.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_hotel.has_previous %}href="?page={{list_hotel.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_hotel.number %}
+<li class="active">
+    <a href="#">{{list_hotel.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_hotel.paginator.num_pages}}">Last</a></li>
+<li {% if not list_hotel.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_hotel.has_next %} href="?page={{list_hotel.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+
+{% endif %}
+
+{% if list_travel %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Tour & Travel</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_travel %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/travel/{{lokasi.id}}">{{lokasi.nama_travel}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.tgl_pub}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/travel/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_travel.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_travel.has_previous %}href="?page={{list_travel.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_travel.number %}
+<li class="active">
+    <a href="#">{{list_travel.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_travel.paginator.num_pages}}">Last</a></li>
+<li {% if not list_travel.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_travel.has_next %} href="?page={{list_travel.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+
+{% endif %}
+
+
+{% if list_rusak %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Rumah Sakit</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_rusak %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/rusak/{{lokasi.id}}">{{lokasi.nama_rumahsakit}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.last_modified}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/rusak/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_rusak.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_rusak.has_previous %}href="?page={{list_rusak.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_rusak.number %}
+<li class="active">
+    <a href="#">{{list_rusak.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_rusak.paginator.num_pages}}">Last</a></li>
+<li {% if not list_rusak.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_rusak.has_next %} href="?page={{list_rusak.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+
+{% endif %}
+
+{% if list_pendidikan %}
+   <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+
+                    <li class="active">List Pendidikan</li>
+                </ol>
+
+                <hr>
+<img src="{% static 'image/lokasi.png' %}" class="img-responsive" >
+<hr><br>
+{% for lokasi in list_pendidikan %}
+
+<div class="list_event">
+                           <table><th> <a href="/malang/detail/pendidikan/{{lokasi.id}}">{{lokasi.institusi}} </a>  </th> 
+<tr><td> <font color="grey"><i>{{lokasi.last_modified}}</i></font>
+                     </td></tr><tr><td>
+{{lokasi.info|safe|truncatewords:"35"}}<p><a class="btn btn-info" href="/malang/detail/pendidikan/{{lokasi.id}}">Baca selengkapnya</a></p>
+                            
+                                              
+                                                    </td></tr>
+    
+                  </table>
+</div>
+{% endfor %}
+
+<ul class="pagination">
+<li {% if not list_pendidikan.has_previous %} class="disabled"{% endif %}>
+    
+    <a {% if list_pendidikan.has_previous %}href="?page={{list_pendidikan.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage list_pendidikan.number %}
+<li class="active">
+    <a href="#">{{list_pendidikan.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{list_pendidikan.paginator.num_pages}}">Last</a></li>
+<li {% if not list_pendidikan.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  list_pendidikan.has_next %} href="?page={{list_pendidikan.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+
+{% endif %}
+
+
+
+{% for detail_htl in select_hotel %}
+                <!-- Title -->
+                <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_htl.nama_hotel}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_htl.tgl_pub}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_htl.nama_hotel}}</li>
+                </ol>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_htl.image}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_htl.info|safe}}
+            <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/hotel/{{detail_htl.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/hotel/{{detail_htl.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+
+         <hr>
+
+          
+
+           {% endfor %}
+
+
+{% for detail_trvl in select_travel %}
+                <!-- Title -->
+                <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_trvl.nama_travel}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_trvl.tgl_pub}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_trvl.nama_travel}}</li>
+                </ol>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_trvl.image}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_trvl.info|safe}}
+            <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/travel/{{detail_trvl.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/travel/{{detail_trvl.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+          
+           {% endfor %}
+
+
+{% for detail_pend in select_pendidikan %}
+                <!-- Title -->
+                <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_pend.institusi}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_pend.last_modified}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_pend.institusi}}</li>
+                </ol>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_pend.cover}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_pend.info|safe}}
+            <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/pendidikan/{{detail_pend.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/pendidikan/{{detail_pend.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+           
+           {% endfor %}
+
+
+{% for detail_rusak in select_rusak %}
+                <!-- Title -->
+                <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_rusak.nama_rumahsakit}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_rusak.last_modified}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_rusak.nama_rumahsakit}}</li>
+                </ol>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_rusak.cover}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_rusak.info|safe}}
+            <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/rusak/{{detail_rusak.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/rusak/{{detail_rusak.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+         
+           {% endfor %}
+
+{% for detail_art in select_article %}
+                <!-- Title -->
+                <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_art.title}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_art.tgl_buat}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_art.title}}</li>
+                </ol>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_art.image_post}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_art.isi|safe}}
+            <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/{{detail_art.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/{{detail_art.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+       
+		   {% endfor %}
+		  
+		   {% for detail_wis in select_wisata %}
+		   
+
+		           <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_wis.title}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_wis.last_modified}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_wis.title}}</li>
+                </ol>
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_wis.image}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_wis.info|safe}}
+		   <p><h4>Lokasi : </h4>{{detail_wis.tempat|safe}}</p><br />   
+		      <div class="google_map fix">
+                        <!--    <img src="images/map.png" alt="map"/> -->
+                        <div id="googleMap"></div>
+                        </div>
+  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/wisata/{{detail_wis.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/wisata/{{detail_wis.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+            
+			   {% endfor %}
+		   
+		   {% for detail_kuliner in select_kuliner %}
+		   
+
+		           <h1 style="font-family: 'Ubuntu',sans-serif;">{{detail_kuliner.nama_kuliner}}</h1>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> {{detail_kuliner.last_modified}}</p>
+
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li class="active">{{detail_kuliner.nama_kuliner}}</li>
+                </ol>
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="/media/{{detail_kuliner.image_kuliner}}" alt="ini foto gambarnya">
+
+                <hr>
+
+                <!-- Post Content -->
+           {{detail_kuliner.info|safe}}
+		   <p><h4>Lokasi : </h4>{{detail_kuliner.tempat|safe}}</p><br />   
+		      <div class="google_map fix">
+                        <!--    <img src="images/map.png" alt="map"/> -->
+                        <div id="googleMap"></div>
+                        </div>
+		     <br />             
+ <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/wisata/kuliner/{{detail_kuliner.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/wisata/kuliner/{{detail_kuliner.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a>
+
+           <hr>
+
+		   {% endfor %}
+		   <hr>
+ <div class="well">
+<div class="site_map">
+<h4>Related Post</h4>
+{% if select_article %}
+
+<ul>
+{% for related in related_post %}
+
+<li><a href="/malang/detail/{{related.id}}">{{related.title}}</a> </li>
+ 
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_wisata %}
+
+<ul>
+{% for related in related_wisata %}
+
+<li><a href="/malang/detail/wisata/{{related.id}}">{{related.title}}</a> 
+{% endfor %}
+</ul>
+{% endif %}
+
+
+{% if select_kuliner %}
+
+<ul>
+{% for related in related_kuliner %}
+
+<li><a href="/malang/detail/wisata/kuliner/{{related.id}}">{{related.nama_kuliner}}</a> 
+
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_hotel %}
+
+<ul>
+{% for related in related_hotel %}
+
+<li><a href="/malang/detail/hotel/{{related.id}}">{{related.nama_hotel}}</a> 
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_travel %}
+
+<ul>
+{% for related in related_travel %}
+
+<li><a href="/malang/detail/travel/{{related.id}}">{{related.nama_travel}}</a> 
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_pendidikan %}
+
+<ul>
+{% for related in related_pendidikan %}
+
+<li><a href="/malang/detail/pendidikan/{{related.id}}">{{related.institusi}}</a> 
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_rusak %}
+
+<ul>
+{% for related in related_rusak %}
+
+<li><a href="/malang/detail/rusak/{{related.id}}">{{related.nama_rumahsakit}}</a> 
+{% endfor %}
+</ul>
+{% endif %}
+
+</div>
+</div>
+
+
+
+{% if select_article %}
+
+{% for detail_art in select_article %}
+
+     {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_art.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+
+
+{% endfor %}
+{% endif %}
+		
+
+ {% if select_wisata %}
+
+{% for detail_wis in select_wisata %}
+
+{% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{{detail_wis.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+
+{% if select_kuliner %}
+
+{% for detail_kuliner in select_kuliner %}
+
+
+            {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_kuliner.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+
+
+{% if select_hotel %}
+
+{% for detail_htl in select_hotel %}
+
+  {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_htl.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+
+{% if select_travel %}
+
+{% for detail_trvl in select_travel %}
+
+  {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_trvl.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+
+{% if select_pendidikan %}
+
+{% for detail_pend in select_pendidikan %}
+
+ {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_pend.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+
+
+{% if select_rusak %}
+
+{% for detail_rusak in select_rusak %}
+
+   {% load disqus_tags %}
+  {% set_disqus_identifier "blogentry_{{detail_rusak.id}}" object.id %}
+{% set_disqus_title page.title %}
+   {% disqus_show_comments %}
+{% endfor %}
+{% endif %}
+           
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                <div align="center"><p><a href="http://ti-dasar.lab.gunadarma.ac.id/?p=5746" title="kompres"><img class="img-responsive" src="{% static 'image/kompres-2015.png' %}" width="250px"  alt="kompres2015" title="kompres"></a>
+</p><p><a href="/" title="kompres"><img class="img-responsive" src="{% static 'New Folder/logo-burung-di-tangkai.png' %}" width="250px"  title="kompres"></a>
+				</p>
+                </div>
+                    <!-- /.input-group -->
+                    
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                 
+                   <h3 style="font-family: 'klavikalight', cursive;">Kategori :</h3>
+                <ul>
+                <li><a href="/news/list/"><i class="fa fa-file"></i> Berita</a></li>
+                <li><a href="/kuliner/lokasi/list/"><i class="fa fa-android"></i> Kuliner</a></li>
+                <li><a href="/wisata/lokasi/list/"><i class="fa fa-code"></i> Wisata</a></li>
+                <li><a href="/hotel/lokasi/list/"><i class="fa fa-code"></i> Hotel</a></li>
+                <li><a href="/rusak/list/"><i class="fa fa-book"></i> Rumah Sakit</a></li>
+                <li><a href="/travel/lokasi/list/"><i class="fa fa-globe"></i> Tour and Travel</a></li>
+                <li><a href="/pendidikan/list/"><i class="fa fa-windows"></i> Pendidikan di Malang</a></li>
+                </ul>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+               <div class="site_map">
+<h4>Recent Post</h4>
+{% if select_article %}
+
+<ul>
+{% for recent in recent %}
+
+<li><a href="/malang/detail/{{recent.id}}">{{recent.title}}</a> - <i>{{recent.tgl_buat}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_wisata %}
+
+<ul>
+{% for recent in recent_wisata %}
+
+<li><a href="/malang/detail/wisata/{{recent.id}}">{{recent.title}}</a> - <i>{{recent.last_modified}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_kuliner %}
+
+<ul>
+{% for recent in recent_kuliner %}
+
+<li><a href="/malang/detail/wisata/kuliner{{recent.id}}">{{recent.nama_kuliner}}</a> - <i>{{recent.last_modified}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_hotel %}
+
+<ul>
+{% for recent in recent_hotel %}
+
+<li><a href="/malang/detail/hotel/{{recent.id}}">{{recent.nama_hotel}}</a> - <i>{{recent.tgl_pub}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_travel %}
+
+<ul>
+{% for recent in recent_travel %}
+
+<li><a href="/malang/detail/travel/{{recent.id}}">{{recent.nama_travel}}</a> - <i>{{recent.tgl_pub}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_pendidikan %}
+
+<ul>
+{% for recent in recent_pendidikan %}
+
+<li><a href="/malang/detail/pendidikan/{{recent.id}}">{{recent.institusi}}</a> - <i>{{recent.last_modified}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if select_rusak %}
+
+<ul>
+{% for recent in recent_rusak %}
+
+<li><a href="/malang/detail/rusak/{{recent.id}}">{{recent.nama_rumahsakit}}</a> - <i>{{recent.last_modified}}</i></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+
+</div>
+                </div>
+
+                <div class="well">
+                    <div align="center"><img alt="Situs Resmi Pemerintah Kota Malang" class="img-responsive" src="http://malangkota.go.id/wp-content/themes/malangkota/images/logo.png"><p>Situs Resmi Pemerintah Kota Malang<br><a href="http://malangkota.go.id/">www.malangkota.go.id</a></p></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+        
+        <hr>
+<div class="container">
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="col-lg-3 col-md-6">
+                <div class="container">
+    
+   
+        <div class="col-lg-3">
+                    <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                        <p style="text-align:center; margin-top:20px;">
+                            <img src="http://placehold.it/500x330" class="img-responsive" alt="">
+                        </p>
+                        <div class="caption">
+                            <div class="blur"></div>
+                            <div class="caption-text">
+                                <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">THIS IS H3</h3>
+                                <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
+                                <a class=" btn btn-default" href="#"><span class="glyphicon glyphicon-plus"> INFO</span></a>
+                            </div>
+                        </div>
+                    </div>
+                
+        </div>
+       <div class="col-lg-3">
+                <p><a class="twitter-timeline" href="https://twitter.com/SadanDC" data-widget-id="670187976014458880">Tweet oleh @MalangBanget</a>
+</p>
+
+        </div>
+            
+
+            <div class="col-lg-3 col-md-6">
+            <h3 style="font-family: 'klavikalight', cursive;">Kategori :</h3>
+                <ul>
+                <li><a href="/news/list/"><i class="fa fa-file"></i> Berita</a></li>
+                <li><a href="/kuliner/lokasi/list/"><i class="fa fa-android"></i> Kuliner</a></li>
+                <li><a href="/wisata/lokasi/list/"><i class="fa fa-code"></i> Wisata</a></li>
+                <li><a href="/hotel/lokasi/list/"><i class="fa fa-code"></i> Hotel</a></li>
+                <li><a href="/rusak/list/"><i class="fa fa-book"></i> Rumah Sakit</a></li>
+                <li><a href="/travel/lokasi/list/"><i class="fa fa-globe"></i> Tour and Travel</a></li>
+                <li><a href="/pendidikan/list/"><i class="fa fa-windows"></i> Pendidikan di Malang</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h3 style="font-family: 'Playball', cursive;">Handcrafted by :</h3>
+                <h2 style="font-family: 'Ubuntu', sans-serif;">Curuts Developer</h2>
+                <p align="center" style="font-family: 'Play'"><a href="http://www.curuts.com" title="Curuts Developer">www.curuts.com</a>
+                </p>
+            <h3>Follow:</h3>
+            
+            
+            <a href="" id="gh" target="_blank" title="Twitter">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>Twitter</a>
+            <a href=""  target="_blank" title="GitHub">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>GitHub</a>
+
+        
+
+
+        
+            
+            </div>
+            <br/>   
+        </div>
+        </div>
+        </div>            
+        </div>         
+        </footer>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+        <div class="jebret col-md-12">
+            <p style="font-family: 'Play';" align="left">Hak Cipta © MalangBanget.com - 2015 | Handcrafted by <a href="http://www.curuts.com" style="color: white;">Curuts Dev</a> &nbsp<span class="iconheart"></span> <img src="static/image/django.png" align="right" height="30px" alt="django" title="powered by django"></p>
+        </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+{% extends "det_art.html" %}
+
+{% block title_page %}Search : {{query}} {% endblock %}
+
+{% block result %}
+
+
+
+ <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li>Search</li>
+                  
+                </ol>    
+ <hr>
+ <font color="blue" size="3"><p>Result of : <i>"{{query}}"</i></p></font>    
+{% if results %}
+     <ol class="breadcrumb">
+                    <li>News</li>
+
+                  
+                </ol>  
+{% for hasil in results %}
+                
+           
+
+           <p><a href="http://malangbanget.com/malang/detail/{{hasil.id}}"><h4 style="font-family: 'Ubuntu',sans-serif;">{{hasil.title}}</h4></a>
+           		<font size="2px" color="grey">Date : {{hasil.tgl_buat}}</font><br>
+           {{ hasil.isi|safe|striptags|truncatewords:"20"|linebreaks }}
+          
+          <table border="0"><tr><td width="500px" > <a href="http://malangbanget.com/malang/detail/{{hasil.id}}">Read More..</a></td><td>  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/{{hasil.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/{{hasil.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a></td></tr></table><hr>
+           </p>
+
+
+{% endfor %}
+
+
+<ul class="pagination">
+<li {% if not results.has_previous %} class="disabled"{% endif %}>
+	
+	<a {% if results.has_previous %}href="?page={{results.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage results.number %}
+<li class="active">
+	<a href="#">{{results.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{results.paginator.num_pages}}">Last</a></li>
+<li {% if not results.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  results.has_next %} href="?page={{results.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+
+{% endif %}
+
+
+{% if resultw %}
+ <ol class="breadcrumb">
+                    <li>Lokasi Wisata</li>
+                   
+                  
+                </ol>  
+{% for has in resultw %}
+
+                
+               
+
+           <p><a href="http://malangbanget.com/malang/detail/wisata/{{has.id}}"><h4 style="font-family: 'Ubuntu',sans-serif;">{{has.title}}</h4></a>
+           		<font size="2px" color="grey">Date : {{has.last_modified}}</font><br>
+           {{ has.info|safe|striptags|truncatewords:"20"|linebreaks }}
+          
+           <table border="0"><tr><td width="500px" > <a href="http://malangbanget.com/malang/detail/wisata/{{has.id}}">Read More..</a></td><td>  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/wisata/{{has.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/wisata/{{has.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a></td></tr></table><hr>
+           </p>
+
+
+{% endfor %}
+{% endif %}
+
+{% if resultk %}
+ <ol class="breadcrumb">
+                    <li>Kuliner</li>
+                
+                  
+                </ol>  
+
+    
+{% for hasilk in resultk %}
+                
+           
+
+           <p><a href="http://malangbanget.com/malang/detail/wisata/kuliner/{{hasilk.id}}"><h4 style="font-family: 'Ubuntu',sans-serif;">{{hasilk.nama_kuliner}}</h4></a>
+           		<font size="2px" color="grey">Date : {{hasilk.last_modified}}</font><br>
+           {{ hasilk.info|safe|striptags|truncatewords:"20"|linebreaks }}
+          
+          <table border="0"><tr><td width="500px" > <a href="http://malangbanget.com/malang/detail/wisata/kuliner/{{hasilk.id}}">Read More..</a></td><td>  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/wisata/kuliner/{{hasilk.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/wisata/kuliner/{{hasilk.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a></td></tr></table><hr>
+           </p>
+
+{% endfor %}
+{% endif %}
+
+{% if resulth %}
+
+ <ol class="breadcrumb">
+                    <li>Hotel</li>
+                    
+                  
+                </ol>  
+    
+{% for hasilh in resulth %}
+                
+           
+
+           <p><a href="http://malangbanget.com/malang/detail/hotel/{{hasilh.id}}"><h4 style="font-family: 'Ubuntu',sans-serif;">{{hasilh.nama_hotel}}</h4></a>
+           		<font size="2px" color="grey">Date : {{hasil.tgl_buat}}</font><br>
+           {{ hasilh.info|safe|striptags|truncatewords:"20"|linebreaks }}
+          
+          <table border="0"><tr><td width="500px" > <a href="http://malangbanget.com/malang/detail/hotel/{{hasilh.id}}">Read More..</a></td><td>  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/hotel/{{hasilh.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/hotel/{{hasilh.id}} target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a></td></tr></table><hr>
+           </p>
+
+{% endfor %}
+{% endif %}
+
+{% if resultt %}
+     <ol class="breadcrumb">
+                    <li>Travel</li>
+                   
+                  
+                </ol>  
+{% for hasilt in resultt %}
+                
+           
+
+           <p><a href="http://malangbanget.com/malang/detail/travel/{{hasilt.id}}"><h4 style="font-family: 'Ubuntu',sans-serif;">{{hasilt.nama_travel}}</h4>
+           		<font size="2px" color="grey">Date : {{hasilt.tgl_pub}}</font><br>
+           {{ hasilt.info|safe|striptags|truncatewords:"20"|linebreaks }}
+          
+          <table border="0"><tr><td width="500px" > <a href="http://malangbanget.com/malang/detail/travel/{{hasilt.id}}">Read More..</a></td><td>  <a class="btn-sm btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=http://malangbanget.com/malang/detail/travel/{{hasilt.id}}" target="_blank">Facebook</a>
+<a class="btn-sm btn-danger" href="https://plus.google.com/share?url=http://malangbanget.com/malang/detail/travel/{{hasilt.id}}" target="_blank">Google+</a>
+  <a class="btn-sm btn-info" href="https://twitter.com/share" target="_blank">Twitter</a></td></tr></table><hr>
+           </p>
+
+{% endfor %}
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

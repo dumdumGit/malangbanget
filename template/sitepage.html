@@ -1,0 +1,68 @@
+{% extends "det_art.html" %}
+
+{% block title_page %} site_artmaps {% endblock %}
+
+{% block result %}
+
+<style type="text/css">
+  .site_artmap ul li {
+    background: #FAFAFA;
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #fff;
+    padding: 2px;
+    padding-left: 5px;
+    list-style: decimal;
+  }
+  .site_artmap ul li:nth-child(odd) {
+    background: #FFF;
+  }
+</style>
+
+<div class="site_artmap">
+<h2>SiteMap</h2>
+{% if site_art %}
+<ul>
+{% for  site_map_art in site_art %}
+
+<li><a href="/malang/detail/{{site_map_art.id}}">{{site_map_art.title}}</a> - <i>{{site_map_art.tgl_buat}}</i></li>
+
+{% endfor %}
+</ul>
+{% endif %}
+
+
+<ul>
+{% for  site_map_wsta in site_wsta %}
+
+<li><a href="/malang/detail/{{site_map_wsta.id}}">{{site_map_wsta.title}}</a> - <i>{{site_map_wsta.last_modified}}</i></li>
+
+{% endfor %}
+</ul>
+
+
+
+</div>
+
+<ul class="pagination">
+<li {% if not site_art.has_previous %} class="disabled"{% endif %}>
+	
+	<a {% if site_art.has_previous %}href="?page={{site_art.previous_page_number}}" aria-label="Previous" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+</li>
+<li><a href="?page=1">First</a></li>
+{% for linkpage in page_range %}
+{% ifequal linkpage site_art.number %}
+<li class="active">
+	<a href="#">{{site_art.number}}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li><a href="?page={{linkpage}}">{{linkpage}}</a></li>
+{% endifequal %}
+{% endfor %}
+
+<li><a href="?page={{site_art.paginator.num_pages}}">Last</a></li>
+<li {% if not site_art.has_next %} class="disabled" {% endif %}>
+<li>
+<a {% if  site_art_page.has_next %} href="?page={{site_art.next_page_number}}" aria-label="Next" {% endif %}><span aria-hidden="true"></span></a></li>
+
+</ul>
+{% endblock %}
+

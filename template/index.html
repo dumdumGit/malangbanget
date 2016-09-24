@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{%load staticfiles%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MalangBanget - Ketahui Malang Setiap Jengkalnya">
+    <meta name="author" content="MalangBanget">
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    <title>MalangBanget - Ketahui Malang Setiap Jengkalnya</title>
+
+    <!-- Bootstrap Core static/css -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom static/css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="http://cdnstatic.js.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.static.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.static.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.static.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.static.js/1.4.2/respond.min.static.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- PRELOADINGNYA OFF DULUL YA <div class="se-pre-con"></div> -->
+    <!-- Navigation -->
+    <nav id="custom-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">MalangBanget</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#intro">Perkenalan</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Wisata dan Kuliner</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Shortcut</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#parallaxmen">Jebret</a>
+					
+                    </li>
+                      <li>
+                        <a class="page-scroll" href="/sitemap/">Sitemap</a>
+                    
+                    </li>
+                </ul>
+                <ul class="navbar-right">
+                        <form action="/search/" method="GET" class="navbar-form pull-right" role="search">
+                            <div class="input-group">
+                            {% csrf_token %}
+                                <input type="text" class="form-control" placeholder="Cari disini" name="found">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                        </form> 
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+<!-- Header full page dimulai -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background static/image using inline static/css below. -->
+                <div class="fill" style="background-image:url('{% static 'image/bg2.jpg' %}');"></div>
+                <div class="carousel-caption">
+                    <h2 style="font-family: 'Playball', cursive;"><a style="color:black;" href="#">Koleksi Museum Angkut</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background static/image using inline static/css below. -->
+                <div class="fill" style="background-image:url('{% static 'image/bg1.jpg' %}');"></div>
+                <div class="carousel-caption">
+                    <h2 style="font-family: 'Playball', cursive;"><a style="color:black;" href="#">Pemandangan jos</a></h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background static/image using inline static/css below. -->
+                <div class="fill" style="background-image:url('{% static 'image/bg3.jpg' %}');"></div>
+                <div class="carousel-caption">
+                    <h2 style="font-family: 'Playball', cursive;"><a style="color:white;" href="#">Tugu Malang</a></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+    <hr class="transition-timer-carousel-progress-bar" />
+    <!--HEADER nya ditutup -->
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+               
+				{% for artikel in art %}
+                <div class="col-lg-4 marjin">			
+				
+                    <img src="/media/{{artikel.image_post}}" height="190px" width="350px" class="img-rounded img-responsive" href="/malang/detail/{{artikel.id}}">
+                    <h1 style="font-family: 'Ubuntu', sans-serif;">{{artikel.title}}</h1>
+                    <p align="right">{{artikel.isi|safe|truncatewords:"35"}}</p>
+                    <a class="btn btn-info" href="/malang/detail/{{artikel.id}}">Baca selengkapnya</a>
+                </div>
+               {% endfor %}
+			 
+        </div>
+    </section>
+	
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+			{% for list_tempat in wis %}
+              <div class="col-lg-3">
+				 <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                        <p style="text-align:center; margin-top:20px;">
+                            <img src="/media/{{list_tempat.image}}" class="img-responsive" alt="">
+                        </p>
+                        <div class="caption">
+                            <div class="blur"></div>
+                            <div class="caption-text">
+                                <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">{{list_tempat.title}}</h3>
+                                <p>{{list_tempat.info|safe|truncatewords:"15"}}</p>
+                                <a class=" btn btn-default" href="/malang/detail/wisata/{{list_tempat.id}}"><span class="glyphicon glyphicon-plus"> MORE</span></a>
+                            </div>
+                        </div>
+                    </div>
+				  </div>
+				
+          {% endfor %}
+               
+  
+
+			{% for wiskul in kul %}
+              <div class="col-lg-3">
+				 <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                        <p style="text-align:center; margin-top:20px;">
+                            <img src="/media/{{wiskul.image_kuliner}}" class="img-responsive" alt="">
+                        </p>
+                        <div class="caption">
+                            <div class="blur"></div>
+                            <div class="caption-text">
+                                <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">{{wiskul.nama_kuliner}}</h3>
+                                <p>{{wiskul.info|safe|truncatewords:"15"}}</p>
+                                <a class=" btn btn-default" href="/malang/detail/wisata/kuliner/{{wiskul.id}}"><span class="glyphicon glyphicon-plus"> MORE</span></a>
+                            </div>
+                        </div>
+                    </div>
+				  </div>
+				
+          {% endfor %}
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Shortcut biar keren -->
+    <section id="portfolio" class="portfolio-section no-padding">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-12">
+                    <h1>&nbsp &nbsp</h1>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft">
+                    <a href="/kuliner/lokasi/list/" class="portfolio-box">
+                        <img src="static/image/portfolio/1.png" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    WISATA
+                                </div>
+                                <div class="project-name">
+                                    K U L I N E R
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft">
+                    <a href="/wisata/lokasi/list/" class="portfolio-box">
+                        <img src="{% static 'image/portfolio/2.png' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    LOKASI
+                                </div>
+                                <div class="project-name">
+                                    T E M P AT W I S A T A
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInLeft animated" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft">
+                    <a href="/hotel/lokasi/list/" class="portfolio-box">
+                        <img src="{% static 'image/portfolio/3.png' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    LOKASI
+                                </div>
+                                <div class="project-name">
+                                    H O T E L
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInRight animated" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInRight">
+                    <a href="/rusak/list/" class="portfolio-box">
+                        <img src="{% static 'image/portfolio/rumahsakit.png' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    LOKASI
+                                </div>
+                                <div class="project-name">
+                                    R U M A H S A K I T
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInRight animated" data-wow-delay="1.0s" style="visibility: visible; animation-delay: 1.0s; animation-name: fadeInRight">
+                    <a href="/travel/lokasi/list/" class="portfolio-box">
+                        <img src="{% static 'image/portfolio/tourntravel.png' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    DAFTAR
+                                </div>
+                                <div class="project-name">
+                                    TOUR & TRAVEL
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeOutDown animated" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight">
+                    <a href="/pendidikan/list/" class="portfolio-box">
+                        <img src="{% static 'image/portfolio/pendidikan1.png' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    PENDIDIKAN
+                                </div>
+                                <div class="project-name">
+                                    DI KOTA MALANG
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <img src="{% static 'image/line.png' %}" style="background-repeat:repeat-x" width="100%" height="18px">
+    </section>
+
+    <!-- Bagian parallax dimulai -->
+    <section id="parallaxmen" class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 style="font-family: 'Ubuntu', sans-serif; color:white;">Kapan ke malang?</h1>
+                </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-leftheading">
+                                    <h3 class="panel-lefttitle">Panel title</h3>
+                                </div>
+                                <div class="panel-rightbody">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-leftheading">
+                                <h3 class="panel-lefttitle">Panel title</h3>
+                            </div>
+                                <div class="panel-rightbody">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Contact Section -->
+<hr>
+<div class="container">
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="col-lg-3 col-md-6">
+                <div class="container">
+    
+   
+        <div class="col-lg-3">
+                    <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                        <p style="text-align:center; margin-top:20px;">
+                            <img src="http://placehold.it/500x330" class="img-responsive" alt="">
+                        </p>
+                        <div class="caption">
+                            <div class="blur"></div>
+                            <div class="caption-text">
+                                <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">THIS IS H3</h3>
+                                <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
+                                <a class=" btn btn-default" href="#"><span class="glyphicon glyphicon-plus"> INFO</span></a>
+                            </div>
+                        </div>
+                    </div>
+                
+        </div>
+       <div class="col-lg-3">
+                    <div class="cuadro_intro_hover " style="background-color:#cccccc;">
+                       
+                        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/SadanDC" data-widget-id="670187976014458880">Tweet oleh @SadanDC</a>
+
+                    </div>
+                
+        </div>
+            
+
+            <div class="col-lg-3 col-md-6">
+            <h3 style="font-family: 'klavikalight', cursive;">Kategori :</h3>
+                <ul>
+                <li><a href=""><i class="fa fa-file"></i> Berita</a></li>
+                <li><a href=""><i class="fa fa-android"></i> Kuliner</a></li>
+                <li><a href=""><i class="fa fa-code"></i> Wisata</a></li>
+                <li><a href=""><i class="fa fa-code"></i> Hotel</a></li>
+                <li><a href=""><i class="fa fa-book"></i> Rumah Sakit</a></li>
+                <li><a href=""><i class="fa fa-globe"></i> Tour and Travel</a></li>
+                <li><a href=""><i class="fa fa-windows"></i> Pendidikan di Malang</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h3 style="font-family: 'Playball', cursive;">Handcrafted by :</h3>
+                <h2 style="font-family: 'Ubuntu', sans-serif;">Curuts Developer</h2>
+                <p align="center" style="font-family: 'Play'"><a target="_blank" href="http://www.curuts.com" title="Curuts Developer">www.curuts.com</a>
+                </p>
+            <p align="center">This site is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> / est Nov 2015</p>
+            
+            
+            <a href="" target="_blank" title="Twitter">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>Twitter</a>
+            <a href=""  target="_blank" title="GitHub">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>GitHub</a>
+
+        
+
+
+        
+            
+            </div>
+            <br/>
+            </div> 
+            </div>  
+            </div>       
+        </div>            
+        </footer>
+        </div>
+        <div class="jebret col-md-12">
+            <p style="font-family: 'Play';" align="left">Hak Cipta © MalangBanget.com - 2015 | Handcrafted by <a href="http://www.curuts.com" style="color: white;">Curuts Dev</a> &nbsp<span class="iconheart"></span> <img src="static/image/django.png" align="right" height="30px" alt="django" title="powered by django"></p>
+        </div>
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+        $(document).ready(function(){
+            var percent = 0, bar = $('.transition-timer-carousel-progress-bar'), crsl = $('#myCarousel');
+            function progressBarCarousel() {
+              bar.css({width:percent+'%'});
+             percent = percent +0.5;
+              if (percent>100) {
+                  percent=0;
+                  crsl.carousel('next');
+              }      
+            }
+            crsl.carousel({
+                interval: false,
+                pause: true
+            }).on('slid.bs.carousel', function () {percent=0;});var barInterval = setInterval(progressBarCarousel, 30);
+            crsl.hover(
+                function(){
+                    clearInterval(barInterval);
+                },
+                function(){
+                    barInterval = setInterval(progressBarCarousel, 30);
+                })
+        });
+    </script>
+
+    <!-- Wow dan animate bounce -->
+    <script src="{% static 'js/wow.min.js' %}"></script>
+              <script>
+              new WOW().init();
+              </script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
+</body>
+
+</html>
