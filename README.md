@@ -1,6 +1,6 @@
 # malangbanget
 
-MalangBanget is a simple website about tourism information in Malang, Indonesia using Django Framework
+MalangBanget is a simple website about tourism information using Django Framework
 ~ requirements
 
 - I use django-1.8.3
