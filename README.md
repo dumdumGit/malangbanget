@@ -4,7 +4,7 @@ MalangBanget is a simple website about tourism information using Django Framewor
 
 # requirements
 
-- I use django-1.8.3
+- django-1.8.3
 - django-disqus
 - django-location-fields
 - django-twitter
